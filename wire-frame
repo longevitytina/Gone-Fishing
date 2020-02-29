@@ -1,0 +1,21 @@
+Gone fishing
+
+phase 1 build:
+-user clicks anywhere within designated screen area
+-if clicks within the correct zone a fish will be collected, and points
+will be added based on fish type
+-game over if a shark is caught
+-win if all fish are caught and shark is avoided
+
+phase 2 build:
+-fish heads will pop out of random areas, user must click heads before
+disappearing
+-shark fin will randomly pop up, is clicked game over
+-win if all fish are collected
+
+phase 3 build:
+-easy, med, hard lvls
+-fish will pop up faster depending the harder the setting
+-shark fins will pop out more the harder it gets
+-shark fin will randomly pop up, if clicked game over
+-win if all fish are collected
