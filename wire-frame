@@ -6,6 +6,9 @@ phase 1 build:
 will be added based on fish type
 -game over if a shark is caught
 -win if all fish are caught and shark is avoided
+-composed of 6 blocks on screen
+-1 fish per block, total of 5fish
+-shark on 1 block
 
 phase 2 build:
 -fish heads will pop out of random areas, user must click heads before
