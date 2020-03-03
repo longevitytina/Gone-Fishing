@@ -1,44 +1,68 @@
-//TOGGLE
-setInterval(() => {
-    document.querySelector('.fish1').classList.toggle('movedB')
-    document.querySelector('.fish3').classList.toggle('movedUp')
-}, 1000)
 
-setInterval(() => {
-    document.querySelector('.fish2').classList.toggle('moved')
-}, 2000)
+const init = () => {
+    //renders fish images
+    // fishLayout()
+    let score = 0
+    //RENDER FISHES FROM OBJECT
+    function fishLayout() {
+        fishes.forEach(function (fish, idx) {
+            const fishElement = document.createElement('img')
+            fishElement.setAttribute('src', fish.image)
+            fishElement.setAttribute('id')
 
-setInterval(() => {
-    document.querySelector('.shark').classList.toggle('movedShark')
-}, 2000)
 
+        })
+    }
+
+    //TOGGLE
+    setInterval(() => {
+        document.querySelector('.fish1').classList.toggle('movedB')
+        document.querySelector('.fish3').classList.toggle('movedUp')
+    }, 1000)
+
+    setInterval(() => {
+        document.querySelector('.fish2').classList.toggle('moved')
+    }, 2000)
+
+    setInterval(() => {
+        document.querySelector('.shark').classList.toggle('movedShark')
+    }, 2000)
+}
+
+// START BUTTON
+document.querySelector('.btn-start').addEventListener('click', init)
+let score = 0
+document.querySelector('.score').innerHTML = score
 
 //FISH
 const fishes = [
     {
-        fishName: 1,
+        fishName: '1',
         fishType: document.querySelector('.fish'),
         score: 100,
         image: 'images/fish1.png'
     },
     {
+        fishName: '2',
         fishType: document.querySelector('.fish2'),
         score: 200,
         image: ''
     },
     {
+        fishName: '3',
         fishType: document.querySelector('.fish3'),
         score: 300,
         image: ''
     },
     {
+        fishName: 'shark',
         fishType: document.querySelector('.shark'),
-        score: 300,
+        score: 'DEAD',
         image: ''
     }
 ]
 
-//SHUFFLE FISH ARRAY
+//SHUFFLE FISH ARRAY(IN PLACE)
 function shuffle(array) {
     var m = array.length, t, i;
 
@@ -54,27 +78,7 @@ function shuffle(array) {
     return array
 }
 
-fishLayout(){
-    shuffle(fishes)
 
-
-}
-
-// fishes.fishType.addEventListener('click', function () {
-//     console.log('clicked')
-// })
-
-// apply event delegation to container,
-// .target => fish
-// condition if event.target
-
-// for (let i in fishes) {
-//     console.log(fishes[i].fishType)
-//     const fish = fishes[i].fishType
-//     fish.addEventListener('click', function () {
-//         console.log('clicked')
-//     })
-// }
 
 //EVENT DELEGATION
 let container = document.querySelector('.container')
@@ -90,26 +94,29 @@ function handleFish(event) {
     //if target is class fish, then assign points
     if (fish === '1') {
         console.log(`${fishes[0].score}`)
+        score += fishes[0].score
+
     } else if (fish === '2') {
         console.log(`${fishes[1].score}`)
+        score += fishes[0].score
     } else if (fish === '3') {
         console.log(`${fishes[2].score}`)
+        score += fishes[0].score
+    } else if (fish === '4') {
+        console.log(`${fishes[3].score}`)
+        score = 0
     }
+    incrementScore()
+
 }
 
-const init = () => {
-    //
+function incrementScore() {
+    document.querySelector('.score').innerHTML += score
 }
 
 //image appears onto screen intermittendly,
 
 //darts across screen and dissappears
-
-////user clicks image only when visible
-
-//console.log('clicked')
-//recieves scores when clicked
-
 
 
 //arrays of possible positions
