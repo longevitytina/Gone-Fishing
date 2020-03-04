@@ -77,32 +77,37 @@ container.addEventListener('click', handleFish)
 
 function handleFish(event) {
     let fish = event.target.id
-    // console.dir(event.target.dataset.id)
+    let fishSource = event.target
+    console.log('eventy', event)
+    console.log(fishSource)
     // let fishPoint = event.target.fishes.score
     // for (let i in fishes) {
     //     console.log(fishes[i].score)
     // }
+    if (fish) {
+        //if target is class fish, then assign points
+        if (fish === '0') {
+            console.log(`${fishes[0].score}`)
+            score += fishes[0].score
 
-    //if target is class fish, then assign points
-    if (fish === '0') {
-        console.log(`${fishes[0].score}`)
-        score += fishes[0].score
-    } else if (fish === '1') {
-        console.log(`${fishes[1].score}`)
-        score += fishes[1].score
-    } else if (fish === '2') {
-        console.log(`${fishes[2].score}`)
-        score += fishes[2].score
-        // } else if (fish === '3') {
-        //     console.log(`${fishes[3].score}`)
-        //     score += fishes[0].score
-    } else if (fish === '3') {
-        console.log(`${fishes[3].score}`)
-        score = 0
+        } else if (fish === '1') {
+            console.log(`${fishes[1].score}`)
+            score += fishes[1].score
+        } else if (fish === '2') {
+            console.log(`${fishes[2].score}`)
+            score += fishes[2].score
+            // } else if (fish === '3') {
+            //     console.log(`${fishes[3].score}`)
+            //     score += fishes[0].score
+        } else if (fish === '3') {
+            console.log(`${fishes[3].score}`)
+            score = 0
+        }
+        document.querySelector('.score').innerHTML = score
+        clickedFish(fishSource)
+
     }
-    document.querySelector('.score').innerHTML = score
 }
-
 // RENDER FISH
 function fishLayout() {
     fishes.forEach(function (fish, idx) {
@@ -115,8 +120,11 @@ function fishLayout() {
     })
 }
 
-function clickedFish() {
+
+function clickedFish(srcElement) {
+    srcElement.remove()
     //if fish image is clicked(get attribute)
+    // if (fish.)
     // then remove/hide, set attribute ===none
 
 }
