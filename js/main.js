@@ -1,31 +1,22 @@
 
 const init = () => {
-    //renders fish images
-    // fishLayout()
     let score = 0
     //RENDER FISHES FROM OBJECT
-    function fishLayout() {
-        fishes.forEach(function (fish, idx) {
-            const fishElement = document.createElement('img')
-            fishElement.setAttribute('src', fish.image)
-            fishElement.setAttribute('id')
-
-
-        })
-    }
+    fishLayout()
 
     //TOGGLE
     setInterval(() => {
-        document.querySelector('.fish1').classList.toggle('movedB')
-        document.querySelector('.fish3').classList.toggle('movedUp')
+        //to use numbers as IDs format: '#\\3 ID'
+        document.querySelector('#\\31 ').classList.toggle('movedB')
+        document.querySelector('#\\30 ').classList.toggle('movedUp')
     }, 1000)
 
     setInterval(() => {
-        document.querySelector('.fish2').classList.toggle('moved')
+        document.querySelector('#\\32 ').classList.toggle('moved')
     }, 2000)
 
     setInterval(() => {
-        document.querySelector('.shark').classList.toggle('movedShark')
+        document.querySelector('#\\33 ').classList.toggle('movedShark')
     }, 2000)
 }
 
@@ -46,19 +37,19 @@ const fishes = [
         fishName: '2',
         fishType: document.querySelector('.fish2'),
         score: 200,
-        image: ''
+        image: 'images/fish art2.png'
     },
     {
         fishName: '3',
         fishType: document.querySelector('.fish3'),
         score: 300,
-        image: ''
+        image: 'images/fish art3.png'
     },
     {
         fishName: 'shark',
         fishType: document.querySelector('.shark'),
-        score: 'DEAD',
-        image: ''
+        score: 0,
+        image: 'images/shark.png'
     }
 ]
 
@@ -86,44 +77,64 @@ container.addEventListener('click', handleFish)
 
 function handleFish(event) {
     let fish = event.target.id
+    // console.dir(event.target.dataset.id)
     // let fishPoint = event.target.fishes.score
     // for (let i in fishes) {
     //     console.log(fishes[i].score)
     // }
 
     //if target is class fish, then assign points
-    if (fish === '1') {
+    if (fish === '0') {
         console.log(`${fishes[0].score}`)
         score += fishes[0].score
-
-    } else if (fish === '2') {
+    } else if (fish === '1') {
         console.log(`${fishes[1].score}`)
-        score += fishes[0].score
-    } else if (fish === '3') {
+        score += fishes[1].score
+    } else if (fish === '2') {
         console.log(`${fishes[2].score}`)
-        score += fishes[0].score
-    } else if (fish === '4') {
+        score += fishes[2].score
+        // } else if (fish === '3') {
+        //     console.log(`${fishes[3].score}`)
+        //     score += fishes[0].score
+    } else if (fish === '3') {
         console.log(`${fishes[3].score}`)
         score = 0
     }
-    incrementScore()
+    document.querySelector('.score').innerHTML = score
+}
+
+// RENDER FISH
+function fishLayout() {
+    fishes.forEach(function (fish, idx) {
+        const fishElement = document.createElement('img')
+        fishElement.setAttribute('src', fish.image)
+        fishElement.setAttribute('id', idx)
+        document.querySelector('.container').appendChild(fishElement)
+
+
+    })
+}
+
+function clickedFish() {
+    //if fish image is clicked(get attribute)
+    // then remove/hide, set attribute ===none
 
 }
 
-function incrementScore() {
-    document.querySelector('.score').innerHTML += score
-}
 
-//image appears onto screen intermittendly,
+/***
+ * TODO
+ * images disappear after clicking
+ * more fishes appear that are harder to click
+ *  to replace original fish
+ * More sharks appear
+ *
+ * Game Over screen = eaten
+ * game over screen = time runs out
+ * Game start screen with instructions
+ *
+ *timer
+clicking outside of images = lose points
 
-//darts across screen and dissappears
-
-
-//arrays of possible positions
-// positions = [
-    // {one: x,y coordinates}
-    // {two: x,y coordinates}
-    // {three: x,y coordinates}
- //]
-
- // random number loop to select position
+ *fishes dive into water
+ */

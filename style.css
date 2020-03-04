@@ -4,51 +4,48 @@
     height: 500px;
     background-color: blue;
 }
-
-.fish1{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: black;
-    top: 90px;
-    left: 20px;
-    transition: left, top, 300ms
-}
-
-.fish2{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: black;
-    top: 50px;
-    left: 70px;
-    transition: left, top, 600ms
-}
-.fish3{
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: black;
-    top:200px;
-    left: 100px;
-    transition:  600ms
-
-}
 .score{
     color: rgb(7, 0, 0);
     text-align: left;
 
 }
 
-.shark{
+/* attribute selector */
+/* Fishes */
+ [id = '0']{
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: rgb(147, 3, 3);
-    top: 20px;
+    width: 80px;
+    top: 90px;
     left: 20px;
+    transition: left, top, 300ms
+}
+[id = '1']{
+    position: absolute;
+    width: 90px;
+    top: 50px;
+    left: 70px;
+    transition: left, top, 600ms
+}
+[id = '2']{
+    position: absolute;
+    width: 90px;
+    top:200px;
+    left: 100px;
+    transition:  200ms
+
 }
 
+
+[id = '3']{
+    position: absolute;
+    height: 190px;
+    top: 20px;
+    left: 20px;
+
+    transition: left, top, 300ms
+}
+
+/* Fish Transitions */
 .movedShark {
     top: 200px;
     left: 200px;
@@ -57,6 +54,7 @@
 
 .movedUp {
     transform: scale(0);
+    transition: 200ms
 }
 
 .movedB {
@@ -65,8 +63,8 @@
 }
 
 .moved {
-    /* background-color: blue; */
-
     top: 200px;
     left: -999px;
+    transition: 200ms
+
 }
