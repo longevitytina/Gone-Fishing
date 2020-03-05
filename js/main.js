@@ -1,5 +1,6 @@
 
-const init = () => {
+const init = (event) => {
+    event.stopPropagation()
     let score = 0
     // REMOVE .gameStart node from HTML
     const gameStart = document.querySelector('.gameStart')
@@ -85,7 +86,6 @@ const fishes = [
     }
 ]
 //FISH LVL 2
-// TODO ADD MORE FISHES AND SHARKS
 const fishesTwo = [
     {
         fishName: 'fish10',
@@ -121,7 +121,7 @@ const fishesTwo = [
 
 
 
-//SHUFFLE FISH ARRAY(IN PLACE)
+//SHUFFLE FISH ARRAY(IN PLACE)//not needed..
 function shuffle(array) {
     var m = array.length, t, i;
 
@@ -146,13 +146,15 @@ container.addEventListener('click', handleFish)
 function handleFish(event) {
     let fish = event.target.id
     let fishSource = event.target
+    // let ocean = event.target.
+
     console.log(fish)
     console.log('eventy', event)
     console.log(fishSource)
-    // let fishPoint = event.target.fishes.score
-    // for (let i in fishes) {
-    //     console.log(fishes[i].score)
-    // }
+    //if clicking on container, then -100 points
+    //if points are <=0 then game over
+
+
     if (fish) {
         //if target is class fish, then assign points
         if (fish === 'fish1' || fish === 'fish10') {
@@ -165,9 +167,6 @@ function handleFish(event) {
         } else if (fish === 'fish3' || fish === 'fish30') {
             console.log(`${fishes[2].score}`)
             score += fishes[2].score
-            // } else if (fish === '3') {
-            //     console.log(`${fishes[3].score}`)
-            //     score += fishes[0].score
         } else if (fish === 'shark' || fish === 'shark20') {
             console.log(`${fishes[3].score}`)
             score = 0
@@ -175,8 +174,17 @@ function handleFish(event) {
         }
         document.querySelector('.score').innerHTML = score
         removeFish(fishSource)
+    } else {
+        score -= 10
+        document.querySelector('.score').innerHTML = score
 
     }
+    // if (!fish) {
+    //     console.log('missed!')
+    //     score = score - 10
+    //     document.querySelector('.score').innerHTML = score
+    // }
+
 
     const remainingFish = document.querySelectorAll('.container img')
     if (remainingFish.length === 1) {
@@ -227,36 +235,25 @@ function gameOver() {
     //add 'gameover' as a child of container
     const container = document.querySelector('.container')
     container.appendChild(gameOver)
+
+    //remove all children of container
+    container.forEach(ele){
+        ele.remove()
+    }
+
+    //add restart button
+    const restart = document.createElement('button')
+    restart.innerHTML = 'Restart?'
+    gameOver.appendChild(restart)
+    // restart.setAttribute()
 }
 
 /**
- * Store clicked fish into empty array
- * if full then empty fishTwo array into game
- *
- * or check if fish3 is the only remaining childnode,
- * then render fishesTwo array
- *
- * replace a new fish as soon as a previous fish is removed
- */
 
-
-
-
-
-/***
  * TODO
- * more fishes appear that are harder to click
- *  to replace original fish
- * More sharks appear
- *
- *
+ clicking outside of images = lose points
  *timer
-clicking outside of images = lose points
 
  *fishes dive into water
 
- add more fishes to array(or have a lvl 2 array),
- distribute only some of fishes at first,
- then distribute more as game goes on?
- need to have remainder to speed up transitions
  */
