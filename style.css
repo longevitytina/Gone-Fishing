@@ -12,7 +12,8 @@ header{
     position: relative;
     width: 500px;
     height: 500px;
-    background-color: blue;
+    background-image: url('images/itl.jpg');
+    background-size: 500px 500px
 }
 .score{
     color: rgb(7, 0, 0);
@@ -31,48 +32,94 @@ header{
     left: 20px;
     transition: 300ms
 }
+.moved-fish1{
+    transform: scale(0);
+
+}
 
 #fish2{
     position: absolute;
     width: 90px;
-    top:200px;
-    left: 100px;
+    top:250px;
+    left: 300px;
     transition: top, left, 200ms
-
+}
+#fish2.moved-fish2 {
+    top: -999px;
+    left: 20px;
+    transition: left, top, 200ms
 }
 
 #fish20{
     position: absolute;
-    width: 90px;
-    top:200px;
-    left: 100px;
-    transition: top, left, 200ms
-
+    width: 70px;
+    top:300px;
+    left: 300px;
+    transition: top, left, 100ms
+}
+#fish20.moved-fish20 {
+    top: -999px;
+    left: 30px;
+    transition: left, top, 100ms
 }
 
 #fish10{
     position: absolute;
-    width: 50px;
+    width: 100px;
     top: 90px;
     left: 20px;
     transition: 100ms
+}
+#fish10.moved-fish10 {
+    top: -999px;
+    left: 20px;
+    transition: left, top, 100ms
 }
 
 #fish3 {
     position: absolute;
     height: 70px;
-    top: 200px;
-    left: 40px;
+    top: 300px;
+    left: 200px;
 
     transition: left, top, 300ms
 }
-#fish30 {
+
+#fish3.moved {
+    top: 200px;
+    left: -999px;
+    transition: 200ms
+
+}
+#swim {
     position: absolute;
     height: 70px;
-    top: 200px;
-    left: 40px;
+    top: 50px;
+    left: 300px;
 
     transition: left, top, 300ms
+}
+
+#swim.moved-swim {
+    top: 200px;
+    left: -999px;
+    transition: 200ms
+
+}
+
+
+#fish30 {
+    position: absolute;
+    height: 60px;
+    top: 385px;
+    left: 280px;
+
+    transition: left, top, 150ms
+}
+#fish30.moved-fish30 {
+    top: 200px;
+    left: 998px;
+    transition: 150ms
 }
 #shark {
     filter: opacity(5%);
@@ -85,50 +132,47 @@ header{
 }
 
 #shark20 {
+    filter: opacity(1%);
+    position: absolute;
+    height: 200px;
+    top: 20px;
+    right: 20px;
+
+    transition: right, top, 300ms
+}
+ #shark30 {
     filter: opacity(5%);
     position: absolute;
-    height: 190px;
-    top: 20px;
+    height: 400px;
+    top: 100px;
     left: 20px;
-
-    transition: left, top, 300ms
+    transition:500ms
+        }
+#shark30.movedShark-30 {
+    top: 300px;
+    left: 200px;
+    transform: scale(0);
 }
-
+#shark20.movedShark-20 {
+    top: 300px;
+    left: 200px;
+    /* transition: left, top, 300ms; */
+}
+#shark20:hover{
+    filter: opacity(100%);
+}
+#shark30:hover{
+    filter: opacity(100%);
+}
 
 #shark:hover{
     filter: opacity(100%);
 }
 
-
-/* Fish Transitions */
 #shark.movedShark {
     top: 200px;
     left: 200px;
     /* transition: left, top, 300ms; */
-}
-
-.moved-fish1{
-    transform: scale(0);
-    /* top: -999px;
-    left: 20px; */
-}
-
-#fish2.moved-fish2 {
-    top: -999px;
-    left: 20px;
-    transition: left, top, 200ms
-}
-
-#fish3.moved {
-    top: 200px;
-    left: -999px;
-    transition: 200ms
-
-}
-#fish10.moved-fish10 {
-    top: -999px;
-    left: 20px;
-    transition: left, top, 50ms
 }
 
 .btn-start {

@@ -30,9 +30,28 @@ const init = () => {
     //TODO make transitions, and intervals for new array
     setInterval(() => {
         let item = document.querySelector('#fish10')
-        if (item) { item.classList.toggle('') }
+        if (item) { item.classList.toggle('moved-fish10') }
     }, 2000)
-
+    setInterval(() => {
+        let item = document.querySelector('#fish20')
+        if (item) { item.classList.toggle('moved-fish20') }
+    }, 1000)
+    setInterval(() => {
+        let item = document.querySelector('#fish30')
+        if (item) { item.classList.toggle('moved-fish30') }
+    }, 2000)
+    setInterval(() => {
+        let item = document.querySelector('#shark20')
+        if (item) { item.classList.toggle('movedShark-20') }
+    }, 500)
+    setInterval(() => {
+        let item = document.querySelector('#shark30')
+        if (item) { item.classList.toggle('movedShark-30') }
+    }, 6000)
+    setInterval(() => {
+        let item = document.querySelector('#swim')
+        if (item) { item.classList.toggle('moved-swim') }
+    }, 5000)
 
 
 }
@@ -66,11 +85,17 @@ const fishes = [
     }
 ]
 //FISH LVL 2
+// TODO ADD MORE FISHES AND SHARKS
 const fishesTwo = [
     {
         fishName: 'fish10',
         score: 100,
         image: 'images/fish art4.png'
+    },
+    {
+        fishName: 'swim',
+        score: 100,
+        image: 'images/swim.png'
     },
     {
         fishName: 'fish20',
@@ -86,6 +111,11 @@ const fishesTwo = [
         fishName: 'shark20',
         score: 0,
         image: 'images/shark.png'
+    },
+    {
+        fishName: 'shark30',
+        score: 0,
+        image: 'images/shark30.png'
     }
 ]
 
@@ -125,30 +155,35 @@ function handleFish(event) {
     // }
     if (fish) {
         //if target is class fish, then assign points
-        if (fish === 'fish1') {
+        if (fish === 'fish1' || fish === 'fish10') {
             console.log(`${fishes[0].score}`)
             score += fishes[0].score
 
-        } else if (fish === 'fish2') {
+        } else if (fish === 'fish2' || fish === 'fish20') {
             console.log(`${fishes[1].score}`)
             score += fishes[1].score
-        } else if (fish === 'fish3') {
+        } else if (fish === 'fish3' || fish === 'fish30') {
             console.log(`${fishes[2].score}`)
             score += fishes[2].score
             // } else if (fish === '3') {
             //     console.log(`${fishes[3].score}`)
             //     score += fishes[0].score
-        } else if (fish === 'shark') {
+        } else if (fish === 'shark' || fish === 'shark20') {
             console.log(`${fishes[3].score}`)
             score = 0
             gameOver()
         }
         document.querySelector('.score').innerHTML = score
         removeFish(fishSource)
+
     }
 
     const remainingFish = document.querySelectorAll('.container img')
     if (remainingFish.length === 1) {
+        for (let i = 0; i < remainingFish.length; i++) {
+            const fish = remainingFish[i]
+            fish.remove()
+        }
         fishLayout(fishesTwo)
     }
 
