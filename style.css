@@ -24,31 +24,57 @@ header{
 
 /* attribute selector */
 /* Fishes */
- [id = '0']{
+ #fish1{
     position: absolute;
     width: 80px;
     top: 90px;
     left: 20px;
-    transition: left, top, 300ms
+    transition: 300ms
 }
-[id = '1']{
-    position: absolute;
-    width: 90px;
-    top: 50px;
-    left: 70px;
-    transition: left, top, 600ms
-}
-[id = '2']{
+
+#fish2{
     position: absolute;
     width: 90px;
     top:200px;
     left: 100px;
-    transition:  200ms
+    transition: top, left, 200ms
 
 }
 
+#fish20{
+    position: absolute;
+    width: 90px;
+    top:200px;
+    left: 100px;
+    transition: top, left, 200ms
 
-[id = '3']{
+}
+
+#fish10{
+    position: absolute;
+    width: 50px;
+    top: 90px;
+    left: 20px;
+    transition: 100ms
+}
+
+#fish3 {
+    position: absolute;
+    height: 70px;
+    top: 200px;
+    left: 40px;
+
+    transition: left, top, 300ms
+}
+#fish30 {
+    position: absolute;
+    height: 70px;
+    top: 200px;
+    left: 40px;
+
+    transition: left, top, 300ms
+}
+#shark {
     filter: opacity(5%);
     position: absolute;
     height: 190px;
@@ -58,32 +84,51 @@ header{
     transition: left, top, 300ms
 }
 
-[id = '3']:hover{
+#shark20 {
+    filter: opacity(5%);
+    position: absolute;
+    height: 190px;
+    top: 20px;
+    left: 20px;
+
+    transition: left, top, 300ms
+}
+
+
+#shark:hover{
     filter: opacity(100%);
 }
 
+
 /* Fish Transitions */
-.movedShark {
+#shark.movedShark {
     top: 200px;
     left: 200px;
-    transition: left, top, 300ms;
+    /* transition: left, top, 300ms; */
 }
 
-.movedUp {
+.moved-fish1{
     transform: scale(0);
-    transition: 200ms
+    /* top: -999px;
+    left: 20px; */
 }
 
-.movedB {
+#fish2.moved-fish2 {
     top: -999px;
     left: 20px;
+    transition: left, top, 200ms
 }
 
-.moved {
+#fish3.moved {
     top: 200px;
     left: -999px;
     transition: 200ms
 
+}
+#fish10.moved-fish10 {
+    top: -999px;
+    left: 20px;
+    transition: left, top, 50ms
 }
 
 .btn-start {
@@ -92,8 +137,8 @@ header{
 
 }
 .gameStart{
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     justify-content: center;
     align-items: center;
     text-align: center;

@@ -7,36 +7,34 @@ const init = () => {
 
 
     //RENDER FISHES FROM OBJECT
-    fishLayout()
+    fishLayout(fishes)
 
-    //TOGGLE
+    // TOGGLE
     setInterval(() => {
-        //to use numbers as IDs format: '#\\3 ID'
-        let item = document.querySelector('#\\31 ')
-        let itemTwo = document.querySelector('#\\30 ')
+        let item = document.getElementById('fish1')
+        let itemTwo = document.querySelector('#fish2')
         // if item is existing in DOM, then continue with toggle
-        if (item) {
-            document.querySelector('#\\31 ').classList.toggle('movedB')
-        }
-        if (itemTwo) {
-            document.querySelector('#\\30 ').classList.toggle('movedUp')
-        }
+        if (item) { item.classList.toggle('moved-fish1') }
+        if (itemTwo) { itemTwo.classList.toggle('moved-fish2') }
     }, 1000)
 
     setInterval(() => {
-
-        let item = document.querySelector('#\\32 ')
-        if (item) {
-            document.querySelector('#\\32 ').classList.toggle('moved')
-        }
+        let item = document.querySelector('#fish3')
+        if (item) { item.classList.toggle('moved') }
     }, 2000)
 
     setInterval(() => {
-        let item = document.querySelector('#\\33 ')
-        if (item) {
-            document.querySelector('#\\33 ').classList.toggle('movedShark')
-        }
+        let item = document.querySelector('#shark')
+        if (item) { item.classList.toggle('movedShark') }
     }, 2000)
+    //TODO make transitions, and intervals for new array
+    setInterval(() => {
+        let item = document.querySelector('#fish10')
+        if (item) { item.classList.toggle('') }
+    }, 2000)
+
+
+
 }
 
 // START BUTTON
@@ -47,57 +45,49 @@ document.querySelector('.score').innerHTML = score
 //FISH
 const fishes = [
     {
-        fishName: '1',
-        fishType: document.querySelector('.fish'),
+        fishName: 'fish1',
         score: 100,
         image: 'images/fish1.png'
     },
     {
-        fishName: '2',
-        fishType: document.querySelector('.fish2'),
+        fishName: 'fish2',
         score: 200,
         image: 'images/fish art2.png'
     },
     {
-        fishName: '3',
-        fishType: document.querySelector('.fish3'),
+        fishName: 'fish3',
         score: 300,
         image: 'images/fish art3.png'
     },
     {
         fishName: 'shark',
-        fishType: document.querySelector('.shark'),
         score: 0,
         image: 'images/shark.png'
     }
 ]
 //FISH LVL 2
-// const fishesTwo = [
-//     {
-//         fishName: '1',
-//         fishType: document.querySelector('.fish'),
-//         score: 100,
-//         image: 'images/fish1.png'
-//     },
-//     {
-//         fishName: '2',
-//         fishType: document.querySelector('.fish2'),
-//         score: 200,
-//         image: 'images/fish art2.png'
-//     },
-//     {
-//         fishName: '3',
-//         fishType: document.querySelector('.fish3'),
-//         score: 300,
-//         image: 'images/fish art3.png'
-//     },
-//     {
-//         fishName: 'shark',
-//         fishType: document.querySelector('.shark'),
-//         score: 0,
-//         image: 'images/shark.png'
-//     }
-// ]
+const fishesTwo = [
+    {
+        fishName: 'fish10',
+        score: 100,
+        image: 'images/fish art4.png'
+    },
+    {
+        fishName: 'fish20',
+        score: 200,
+        image: 'images/fish art5.png'
+    },
+    {
+        fishName: 'fish30',
+        score: 300,
+        image: 'images/fish art3.png'
+    },
+    {
+        fishName: 'shark20',
+        score: 0,
+        image: 'images/shark.png'
+    }
+]
 
 
 
@@ -126,6 +116,7 @@ container.addEventListener('click', handleFish)
 function handleFish(event) {
     let fish = event.target.id
     let fishSource = event.target
+    console.log(fish)
     console.log('eventy', event)
     console.log(fishSource)
     // let fishPoint = event.target.fishes.score
@@ -134,43 +125,62 @@ function handleFish(event) {
     // }
     if (fish) {
         //if target is class fish, then assign points
-        if (fish === '0') {
+        if (fish === 'fish1') {
             console.log(`${fishes[0].score}`)
             score += fishes[0].score
 
-        } else if (fish === '1') {
+        } else if (fish === 'fish2') {
             console.log(`${fishes[1].score}`)
             score += fishes[1].score
-        } else if (fish === '2') {
+        } else if (fish === 'fish3') {
             console.log(`${fishes[2].score}`)
             score += fishes[2].score
             // } else if (fish === '3') {
             //     console.log(`${fishes[3].score}`)
             //     score += fishes[0].score
-        } else if (fish === '3') {
+        } else if (fish === 'shark') {
             console.log(`${fishes[3].score}`)
             score = 0
             gameOver()
         }
         document.querySelector('.score').innerHTML = score
         removeFish(fishSource)
-
     }
+
+    const remainingFish = document.querySelectorAll('.container img')
+    if (remainingFish.length === 1) {
+        fishLayout(fishesTwo)
+    }
+
 }
 // RENDER FISH
 
-function fishLayout() {
-    fishes.forEach(function (fish, idx) {
+function fishLayout(array) {
+    array.forEach(function (fish, ) {
         let fishElement = document.createElement('img')
         fishElement.setAttribute('src', fish.image)
-        fishElement.setAttribute('id', idx)
+        fishElement.setAttribute('id', fish.fishName)
         document.querySelector('.container').appendChild(fishElement)
     })
 }
 
+// function addFishesTwo() {
+//     fishesTwo.forEach(function (fish, idx) {
+//         let fishElement = document.createElement('img')
+//         fishElement.setAttribute('src', fish.image)
+//         fishElement.setAttribute('id', idx)
+//         document.querySelector('.container').appendChild(fishElement)
+//     })
 
+// }
+
+//REMOVES CLICKED FISH FROM
 function removeFish(srcElement) {
     srcElement.remove()
+
+    //
+    //everytime srcElement.remove()
+    //addFishTwo()
 }
 
 // * Game Over screen = eaten
@@ -178,10 +188,6 @@ function gameOver() {
     const gameOver = document.createElement('div')
     gameOver.classList.add('gameOver')
     gameOver.innerHTML = "Game Over"
-
-
-
-
 
     //add 'gameover' as a child of container
     const container = document.querySelector('.container')
@@ -191,8 +197,13 @@ function gameOver() {
 /**
  * Store clicked fish into empty array
  * if full then empty fishTwo array into game
+ *
+ * or check if fish3 is the only remaining childnode,
+ * then render fishesTwo array
+ *
+ * replace a new fish as soon as a previous fish is removed
  */
-const deadFishes = []
+
 
 
 
