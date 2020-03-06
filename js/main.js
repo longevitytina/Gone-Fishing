@@ -4,10 +4,11 @@
 
 const init = (event) => {
     event.stopPropagation()
-    let score = 0
+    // let score = 0
     // REMOVE .gameStart node from HTML
     const gameStart = document.querySelector('.gameStart')
     gameStart.classList.toggle('hidden')
+
 
     let container = document.querySelector('.container')
     container.addEventListener('click', handleFish)
@@ -144,10 +145,9 @@ function handleFish(event) {
         } else if (fish === 'fish3' || fish === 'fish30') {
             console.log(`${fishes[2].score}`)
             score += fishes[2].score
-        } else if (fish === 'shark' || fish === 'shark20') {
+        } else if (fish === 'shark' || fish === 'shark20' || fish === 'shark30') {
             console.log(`${fishes[3].score}`)
             score = 0
-            gameOver()
         }
         document.querySelector('.score').innerHTML = score
         removeFish(fishSource)
@@ -165,7 +165,10 @@ function handleFish(event) {
         }
         fishLayout(fishesTwo)
     }
+    if (score <= 0) {
+        gameOver()
 
+    }
 }
 // RENDER FISH
 
@@ -204,35 +207,29 @@ function gameOver() {
     container.removeEventListener('click', handleFish)
     //add restart button
     const restart = document.createElement('button')
+    restart.setAttribute('id', 'btn-reset')
     restart.innerHTML = 'Restart?'
     gameOver.appendChild(restart)
     restart.addEventListener('click', reset)
 }
 
 const reset = () => {
-    const container = document.querySelector('.container')
-    const gameOver = document.querySelector('.gameOver')
-    container.removeChild(gameOver)
+    // const container = document.querySelector('.container')
+    // const gameOver = document.querySelector('.gameOver')
+    // container.removeChild(gameOver)
 
-    const gameStart = document.querySelector('.gameStart')
-    gameStart.classList.toggle('hidden')
+    //TODO fix reset button
+    // const gameStart = document.querySelector('.gameStart')
+    // gameStart.classList.toggle('hidden')
+    // init()
 
-    //     const gameStart = document.createElement('div')
-    //     gameStart.setAttribute('class', 'gamestart')
-    //     container.appendChild(gameStart)
-    //     const start = document.createElement('div')
-    //     start.createElement('class', 'gameStart')
-    //     start.setAttribute('h2', 'Instructions:')
-    //     start.setAttribute('h3', 'Click the fishes for points!   Dont click the shark or youll be eatens, EEK!')
-    //     start.setAttribute('class', 'button')
-    //     gameStart.appendChild(start)
-
+    // document.querySelector('.score').innerHTML = score
 }
 
 /**
 
  * TODO
- clicking outside of images = lose points
+//if score goes below 0points gameover
  *timer
 
  *fishes dive into water
