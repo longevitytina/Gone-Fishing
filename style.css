@@ -1,8 +1,11 @@
-
-
 *{
     font-family: 'Trade Winds', cursive;
 }
+
+body {
+    margin: 0;
+}
+
 .gameStart.hidden{
     display: none;
 }
@@ -12,12 +15,7 @@ header{
     text-align: center;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 50;
-    align-items: center;
-    align-content: center;
+
     position: relative;
     width: 500px;
     margin: 35px auto;
