@@ -4,7 +4,7 @@
 
 const init = (event) => {
     event.stopPropagation()
-    // let score = 0
+    score = 0
     // REMOVE .gameStart node from HTML
     const gameStart = document.querySelector('.gameStart')
     gameStart.classList.toggle('hidden')
@@ -66,6 +66,7 @@ const init = (event) => {
 // START BUTTON
 document.querySelector('.btn-start').addEventListener('click', init)
 let score = 0
+
 document.querySelector('.score').innerHTML = score
 
 //FISH
@@ -215,15 +216,16 @@ function gameOver() {
 
 const reset = () => {
     // const container = document.querySelector('.container')
-    // const gameOver = document.querySelector('.gameOver')
+    const gameOver = document.querySelector('.gameOver')
     // container.removeChild(gameOver)
+    gameOver.remove()
 
-    //TODO fix reset button
-    // const gameStart = document.querySelector('.gameStart')
-    // gameStart.classList.toggle('hidden')
-    // init()
+    // TODO fix reset button
+    const gameStart = document.querySelector('.gameStart')
+    gameStart.classList.toggle('hidden')
+    init()
 
-    // document.querySelector('.score').innerHTML = score
+    document.querySelector('.score').innerHTML = score
 }
 
 /**
