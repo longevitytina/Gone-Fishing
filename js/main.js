@@ -124,40 +124,13 @@ const fishesTwo = [
     }
 ]
 
-
-
-//SHUFFLE FISH ARRAY(IN PLACE)//not needed..
-function shuffle(array) {
-    var m = array.length, t, i;
-
-    // While there remain elements to shuffle…
-    while (m) {
-        // Pick a remaining element…
-        i = Math.floor(Math.random() * m--)
-        // And swap it with the current element.
-        t = array[m]
-        array[m] = array[i]
-        array[i] = t
-    }
-    return array
-}
-
-
-
 //EVENT DELEGATION
-
-
 function handleFish(event) {
     let fish = event.target.id
     let fishSource = event.target
-    // let ocean = event.target.
-
     console.log(fish)
     console.log('eventy', event)
     console.log(fishSource)
-    //if clicking on container, then -100 points
-    //if points are <=0 then game over
-
 
     if (fish) {
         //if target is class fish, then assign points
@@ -178,17 +151,11 @@ function handleFish(event) {
         }
         document.querySelector('.score').innerHTML = score
         removeFish(fishSource)
-    } else {
+    } else { //IF CLICKED NOT ON FISH
         score -= 10
         document.querySelector('.score').innerHTML = score
 
     }
-    // if (!fish) {
-    //     console.log('missed!')
-    //     score = score - 10
-    //     document.querySelector('.score').innerHTML = score
-    // }
-
 
     const remainingFish = document.querySelectorAll('.container img')
     if (remainingFish.length === 1) {
@@ -211,27 +178,16 @@ function fishLayout(array) {
     })
 }
 
-// function addFishesTwo() {
-//     fishesTwo.forEach(function (fish, idx) {
-//         let fishElement = document.createElement('img')
-//         fishElement.setAttribute('src', fish.image)
-//         fishElement.setAttribute('id', idx)
-//         document.querySelector('.container').appendChild(fishElement)
-//     })
-
-// }
-
 //REMOVES CLICKED FISH FROM
 function removeFish(srcElement) {
     srcElement.remove()
 
-    //
-    //everytime srcElement.remove()
-    //addFishTwo()
 }
 
 // * Game Over screen = eaten
 function gameOver() {
+
+
     const gameOver = document.createElement('div')
     gameOver.classList.add('gameOver')
     gameOver.innerHTML = "Game Over"
@@ -245,7 +201,7 @@ function gameOver() {
     for (let i = 0; i < images.length; i++) {
         images[i].remove()
     }
-
+    container.removeEventListener('click', handleFish)
     //add restart button
     const restart = document.createElement('button')
     restart.innerHTML = 'Restart?'
@@ -258,24 +214,19 @@ const reset = () => {
     const gameOver = document.querySelector('.gameOver')
     container.removeChild(gameOver)
 
-    const gameStart = document.createElement('div')
-    gameStart.setAttribute('class', 'gamestart')
-    container.appendChild(gameStart)
-    const start = document.createElement('div')
-    start.createElement('class', 'gameStart')
-    start.setAttribute('h2', 'Instructions:')
-    start.setAttribute('h3', 'Click the fishes for points!   Dont click the shark or youll be eatens, EEK!')
-    start.setAttribute('class', 'button')
-    gameStart.appendChild(start)
+    const gameStart = document.querySelector('.gameStart')
+    gameStart.classList.toggle('hidden')
 
-}
+    //     const gameStart = document.createElement('div')
+    //     gameStart.setAttribute('class', 'gamestart')
+    //     container.appendChild(gameStart)
+    //     const start = document.createElement('div')
+    //     start.createElement('class', 'gameStart')
+    //     start.setAttribute('h2', 'Instructions:')
+    //     start.setAttribute('h3', 'Click the fishes for points!   Dont click the shark or youll be eatens, EEK!')
+    //     start.setAttribute('class', 'button')
+    //     gameStart.appendChild(start)
 
-const landPage = () => {
-    const start = document.createElement('div')
-    start.setAttribute('class', 'gameStart')
-    start.setAttribute('h2', 'Instructions:')
-    start.setAttribute('h3', 'Click the fishes for points!   Dont click the shark or youll be eatens, EEK!')
-    start.setAttribute('class', 'button')
 }
 
 /**
