@@ -2,8 +2,7 @@
 
 
 
-const init = (event) => {
-    event.stopPropagation()
+const init = () => {
     score = 0
     // REMOVE .gameStart node from HTML
     const gameStart = document.querySelector('.gameStart')
@@ -64,7 +63,11 @@ const init = (event) => {
 }
 
 // START BUTTON
-document.querySelector('.btn-start').addEventListener('click', init)
+document.querySelector('.btn-start').addEventListener('click', function (event) {
+    event.stopPropagation()
+    init()
+}
+)
 let score = 0
 
 document.querySelector('.score').innerHTML = score
@@ -211,7 +214,10 @@ function gameOver() {
     restart.setAttribute('id', 'btn-reset')
     restart.innerHTML = 'Restart?'
     gameOver.appendChild(restart)
-    restart.addEventListener('click', reset)
+    restart.addEventListener('click', function (event) {
+        event.stopPropagation()
+        reset()
+    })
 }
 
 const reset = () => {
