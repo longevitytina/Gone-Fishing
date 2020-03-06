@@ -2,6 +2,9 @@
 
 ## User Story
 
+### Technologies
+Javascript, HTML, CSS
+
 ### Landing Page
 Includes title, instructions and start button
 - user clicks start button and splash page toggles to hide
@@ -13,6 +16,7 @@ Includes title, instructions and start button
 - If a shark is clicked then game is over, sharks are opaque until hovered over.
 - Once all fish are clicked then the game automatically loads another array of fish
 - Game will continue looping through array until user loses
+- Game over page include a restart button with loads landing page
 
 
 
