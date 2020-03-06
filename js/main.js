@@ -1,13 +1,14 @@
 
 
-
+//STORE INTERVAL IDS TO HAVE clearInterval() RESET INTERVALS ON
+// RESTART BUTTON, GAMEOVER, AND NEW ROUND
+let intervals = []
 
 const init = () => {
     score = 0
     // REMOVE .gameStart node from HTML
     const gameStart = document.querySelector('.gameStart')
     gameStart.classList.toggle('hidden')
-
 
     let container = document.querySelector('.container')
     container.addEventListener('click', handleFish)
@@ -16,49 +17,50 @@ const init = () => {
     fishLayout(fishes)
 
     // TOGGLE
-    setInterval(() => {
+    intervals.push(setInterval(() => {
         let item = document.getElementById('fish1')
         let itemTwo = document.querySelector('#fish2')
         // if item is existing in DOM, then continue with toggle
         if (item) { item.classList.toggle('moved-fish1') }
         if (itemTwo) { itemTwo.classList.toggle('moved-fish2') }
-    }, 1000)
+    }, 1000))
 
-    setInterval(() => {
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#fish3')
         if (item) { item.classList.toggle('moved') }
-    }, 2000)
+    }, 2000))
 
-    setInterval(() => {
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#shark')
         if (item) { item.classList.toggle('movedShark') }
-    }, 2000)
+    }, 2000))
     //TODO make transitions, and intervals for new array
-    setInterval(() => {
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#fish10')
         if (item) { item.classList.toggle('moved-fish10') }
-    }, 2000)
-    setInterval(() => {
+    }, 2000))
+
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#fish20')
         if (item) { item.classList.toggle('moved-fish20') }
-    }, 1000)
-    setInterval(() => {
+    }, 1000))
+
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#fish30')
         if (item) { item.classList.toggle('moved-fish30') }
-    }, 2000)
-    setInterval(() => {
+    }, 2000))
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#shark20')
         if (item) { item.classList.toggle('movedShark-20') }
-    }, 500)
-    setInterval(() => {
+    }, 500))
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#shark30')
         if (item) { item.classList.toggle('movedShark-30') }
-    }, 6000)
-    setInterval(() => {
+    }, 6000))
+    intervals.push(setInterval(() => {
         let item = document.querySelector('#swim')
         if (item) { item.classList.toggle('moved-swim') }
-    }, 5000)
-
+    }, 5000))
 
 }
 
@@ -167,8 +169,10 @@ function handleFish(event) {
             const fish = remainingFish[i]
             fish.remove()
         }
+
         fishLayout(fishesTwo)
     }
+
     if (score <= 0) {
         gameOver()
 
@@ -188,6 +192,7 @@ function fishLayout(array) {
 //REMOVES CLICKED FISH FROM
 function removeFish(srcElement) {
     srcElement.remove()
+    //clearInterval-
 
 }
 
@@ -216,8 +221,26 @@ function gameOver() {
     gameOver.appendChild(restart)
     restart.addEventListener('click', function (event) {
         event.stopPropagation()
+
         reset()
+
     })
+    for (let i = 0; i < intervals.length; i++) {
+        // window.clearInterval(i)
+
+        const interval = intervals[i]
+        clearInterval(interval)
+    }
+    intervals = []
+
+    // //clear interval
+    // intervals.forEach((ele) => {
+    //     // clearInterval(ele)
+    //     delete intervals
+    //     return
+    // })
+
+
 }
 
 const reset = () => {
