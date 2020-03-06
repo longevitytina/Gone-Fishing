@@ -3,6 +3,9 @@
 *{
     font-family: 'Trade Winds', cursive;
 }
+.hidden{
+    display: none;
+}
 header{
     color: rgb(7, 0, 0);
     font-family: 'Trade Winds', cursive;
