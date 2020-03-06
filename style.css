@@ -7,21 +7,28 @@
     display: none;
 }
 header{
+    background-color: rgba(4, 103, 103, 0.625);
     color: rgb(7, 0, 0);
-    font-family: 'Trade Winds', cursive;
-    text-align: left;
+    text-align: center;
 }
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 50;
+    align-items: center;
+    align-content: center;
     position: relative;
     width: 500px;
+    margin: 35px auto;
     height: 500px;
     background-image: url('images/itl.jpg');
     background-size: 500px 500px
 }
+
 .score{
     color: rgb(7, 0, 0);
-    font-family: 'Trade Winds', cursive;
-    text-align: left;
+    text-align: center;
     font-size: 30px;
 
 }
@@ -184,10 +191,11 @@ header{
 
 }
 .gameStart{
-    /* display: flex;
-    flex-direction: column; */
+    /* display: flex; */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-content: center;
     text-align: center;
     position: absolute;
     height:100%;
