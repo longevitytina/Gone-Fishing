@@ -169,7 +169,7 @@ function handleFish(event) {
             const fish = remainingFish[i]
             fish.remove()
         }
-
+        // TODO FIX LOOPING, IF TWO SHARKS REMAIN THEN REDISTRIBUTE ARRAY
         fishLayout(fishesTwo)
     }
 
