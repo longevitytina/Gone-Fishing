@@ -3,7 +3,7 @@
 *{
     font-family: 'Trade Winds', cursive;
 }
-.hidden{
+.gameStart.hidden{
     display: none;
 }
 header{
@@ -191,7 +191,7 @@ header{
 
 }
 .gameStart{
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
